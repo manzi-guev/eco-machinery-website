@@ -166,11 +166,15 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0f4c81 0%, #1a7aa8 100%);
+    background: #0f4c81;
     color: var(--white);
     text-align: center;
     padding: 100px 20px;
     overflow: hidden;
+}
+
+.hero-overlay {
+    display: none;
 }
 
 .hero::before {
@@ -1222,6 +1226,8 @@ footer {
     .stats-grid {
         grid-template-columns: 1fr;
     }
+
+
 
     .cta-section h2 {
         font-size: 2rem;
