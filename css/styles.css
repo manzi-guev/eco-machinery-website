@@ -103,7 +103,7 @@ img {
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 2000;
     transition: var(--transition);
 }
 
@@ -1045,9 +1045,8 @@ footer {
     left: 40%;
 }
 
-/* Ensure content is above watermark */
+/* Ensure content is above watermark but below mobile menu */
 section,
-.navbar,
 footer {
     position: relative;
     z-index: 1;
@@ -1209,6 +1208,32 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Ensure navbar stays on top */
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 2001;
+    }
+
+    /* Keep logo visible */
+    .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 2002;
+    }
+
+    .nav-logo {
+        height: 35px;
+    }
+
+    .nav-brand h1 {
+        font-size: 1.1rem;
+    }
+
+    /* Mobile menu */
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -1220,6 +1245,9 @@ footer {
         transition: 0.3s;
         box-shadow: var(--shadow-lg);
         padding: 2rem 0;
+        z-index: 1999;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -1228,6 +1256,7 @@ footer {
 
     .nav-toggle {
         display: flex;
+        z-index: 2002;
     }
 
     .hero-title {
@@ -1334,42 +1363,4 @@ footer {
     right: -5%;
 }
 
-/* Ensure content is above watermark */
-section,
-.navbar,
-footer {
-    position: relative;
-    z-index: 1;
-}
-
-/* Back to Top Button */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--secondary-color);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-    z-index: 999;
-    box-shadow: var(--shadow-lg);
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.back-to-top:hover {
-    background: var(--primary-color);
-    transform: translateY(-5px);
-}
+/* Duplicate section removed - already defined above */
